@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>let and const</title>
 </head>
+
 <body>
-<script>
-  function setWidth() {
-    var width = 100;
+  <script>
+    /* VAR variables 
+    -- can be updated or redefined
+    -- scope: {FUNCTION scoped}, if not a local variable to a function--they are GLOBALLY scoped  */
+
+    /* CONST and LET are {BLOCKED scoped} */
+    var width;
+    function setWidth() {
+      width = 100;
+      console.log(width);
+    }
+    setWidth();
     console.log(width);
-  }
-  setWidth();
 
-  var age = 100;
-  if(age > 12) {
-    const dogYears = age * 7;
-    console.log(`You are ${dogYears} dog years old!`);
-  }
-
-  let height = 200;
-  const key = 'abc123';
-</script>
+    var age = 100;
+    if (age > 12) {
+      const dogYears = age * 7;
+      console.log(`You are ${dogYears} dog years`);
+    }
+    //3:09
+  </script>
 </body>
+
 </html>

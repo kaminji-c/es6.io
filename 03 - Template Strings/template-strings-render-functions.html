@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Template Strings!</title>
 </head>
-<body>
-<script>
-  const beer = {
-    name: 'Belgian Wit',
-    brewery: 'Steam Whistle Brewery',
-    keywords: ['pale', 'cloudy', 'spiced', 'crisp']
-  };
 
-  function renderKeywords(keywords) {
-    return `
+<body>
+  <script>
+    //When NESTING gets HAIRY and FUNKY...use RENDERING -> creating a RENDER FUNCTION similar to REACT Components
+    const beer = {
+      name: 'Belgian Wit',
+      brewery: 'Steam Whistle Brewery',
+      keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+    };
+
+    function renderKeywords(keywords) {
+      return `
       <ul>
         ${keywords.map(keyword => `<li>${keyword}</li>`).join('')}
       </ul>
     `;
-  }
+    }
 
-  const markup = `
+    const markup = `
     <div class="beer">
       <h2>${beer.name}</h2>
       <p class="brewery">${beer.brewery}</p>
@@ -28,8 +31,9 @@
     </div>
   `;
 
-  document.body.innerHTML = markup;
+    document.body.innerHTML = markup;
 
-</script>
+  </script>
 </body>
+
 </html>

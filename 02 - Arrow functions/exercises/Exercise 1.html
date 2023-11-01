@@ -1,48 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Arrow Functions</title>
 </head>
+
 <body>
 
-<ul>
-  <li data-time="5:17">Flexbox Video</li>
-  <li data-time="8:22">Flexbox Video</li>
-  <li data-time="3:34">Redux Video</li>
-  <li data-time="5:23">Flexbox Video</li>
-  <li data-time="7:12">Flexbox Video</li>
-  <li data-time="7:24">Redux Video</li>
-  <li data-time="6:46">Flexbox Video</li>
-  <li data-time="4:45">Flexbox Video</li>
-  <li data-time="4:40">Flexbox Video</li>
-  <li data-time="7:58">Redux Video</li>
-  <li data-time="11:51">Flexbox Video</li>
-  <li data-time="9:13">Flexbox Video</li>
-  <li data-time="5:50">Flexbox Video</li>
-  <li data-time="5:52">Redux Video</li>
-  <li data-time="5:49">Flexbox Video</li>
-  <li data-time="8:57">Flexbox Video</li>
-  <li data-time="11:29">Flexbox Video</li>
-  <li data-time="3:07">Flexbox Video</li>
-  <li data-time="5:59">Redux Video</li>
-  <li data-time="3:31">Flexbox Video</li>
-</ul>
+  <ul>
+    <li data-time="5:17">Flexbox Video</li>
+    <li data-time="8:22">Flexbox Video</li>
+    <li data-time="3:34">Redux Video</li>
+    <li data-time="5:23">Flexbox Video</li>
+    <li data-time="7:12">Flexbox Video</li>
+    <li data-time="7:24">Redux Video</li>
+    <li data-time="6:46">Flexbox Video</li>
+    <li data-time="4:45">Flexbox Video</li>
+    <li data-time="4:40">Flexbox Video</li>
+    <li data-time="7:58">Redux Video</li>
+    <li data-time="11:51">Flexbox Video</li>
+    <li data-time="9:13">Flexbox Video</li>
+    <li data-time="5:50">Flexbox Video</li>
+    <li data-time="5:52">Redux Video</li>
+    <li data-time="5:49">Flexbox Video</li>
+    <li data-time="8:57">Flexbox Video</li>
+    <li data-time="11:29">Flexbox Video</li>
+    <li data-time="3:07">Flexbox Video</li>
+    <li data-time="5:59">Redux Video</li>
+    <li data-time="3:31">Flexbox Video</li>
+  </ul>
 
-<script>
+  <script>
 
-  // Select all the list items on the page and convert to array
+    // Select all the list items on the page and convert to array
+    /* const listItem = document.querySelectorAll('li'); */
+    //WES way because the things these el have in common is that they have a data attribute
+    //const listItem = document.querySelectorAll('[data-time]');
+    //WRAP IN ARRAY.FROM to keep code cleaner
+    const listItems = Array.from(document.querySelectorAll('[data-time]'));
+    //REASON to change into an ARRAY is because it is intially a NODELIST and NODELISTs do NOT have METHODS. It is not a TRUE ARRAY!!!
+    /* let listArray = Array.from(listItem);
+    console.log(listArray);*/
+    console.log(listItems);
 
-  // Filter for only the elements that contain the word 'Flexbox'
+    // Filter for only the elements that contain the word 'Flexbox'
+    //first attempt hardcode includes
+    /*   let filterResult = listArray.filter((item) => item.outerText.includes('Flexbox'));
+      console.log(filterResult);
+   */
+    //second attempt with no function
+    /*     let filteredResult = listArray.map(item =>
+          item.outerText.toLowerCase())
+          .filter((keyword) => keyword.includes('flexbox')); */
 
-  // map down to a list of time strings
+    //third attempt with function that holds keyword/cleaner code
+    //put filter keyword in a function
+    /*     function keyWord(value) {
+          return value.includes('flexbox');
+        }
+    
+        let filteredResult = listArray.map(item =>
+          item.outerText.toLowerCase())
+          .filter(keyWord);
+        console.log(filteredResult);
+     */
+    //After taking a peek at answer
+    // Filter for only the elements that contain the word 'Flexbox'
+    const filteredItems = listItems
+      .filter(item => item.textContent.includes('Flexbox'))
+      // map down to a list of time strings
+      .map(item => item.dataset.time) //why? because that will give use data-time
+      // map to an array of seconds (arrow func in another, beautiful thing about them that you can do these things so quickly)
+      .map(timecode => {
+        const parts = timecode.split(':').map(part => parseFloat(part));
+        return (parts[0] * 60) + parts[1];
+      })
+      // reduce to get total
+      .reduce((runningTotal, seconds) => runningTotal + seconds, 0);
+    console.log(filteredItems);
 
-  // map to an array of seconds
 
-  // reduce to get total
 
-  // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
 
-</script>
+
+    // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
+
+  </script>
 </body>
+
 </html>
