@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Destructuring!</title>
 </head>
+
 <body>
-<script>
-  const person = {
-    first: 'Wes',
-    last: 'Bos',
-    country: 'Canada',
-    city: 'Hamilton',
-    twitter: '@wesbos'
-  };
+  <script>
+    //DESTRUCTURING: JS Expression that allows us to EXTRACT DATA from ARRAYS[items], OBJECTS[properties], and MAPS and SETS into their OWN VARIABLE
 
-  const { first, last, twitter } = person;
+    const person = {
+      first: 'Wes',
+      last: 'Bos',
+      country: 'Canada',
+      city: 'Hamilton',
+      twitter: '@wesbos'
+    };
+    //destructuring 
+    const { first, last, twitter } = person;
 
-  const wes = {
-    first: 'Wes',
-    last: 'Bos',
-    links: {
-      social: {
-        twitter: 'https://twitter.com/wesbos',
-        facebook: 'https://facebook.com/wesbos.developer',
-      },
-      web: {
-        blog: 'https://wesbos.com'
+    //deeply nested object
+    const wes = {
+      first: 'Wes',
+      last: 'Bos',
+      links: {
+        social: {
+          twitter: 'https://twitter.com/wesbos',
+          facebook: 'https://facebook.com/wesbos.developer',
+        },
+        web: {
+          blog: 'https://wesbos.com',
+        }
       }
     }
-  };
+    //renaming variables as you destructure them using SEMICOLONS :
+    const { twitter: tweet, facebook: fb } = wes.links.social;
 
-  const { twitter: tweet, facebook: fb } = wes.links.social;
-
-  const settings = { width: 300, color: 'black' }  // height, fontSize
-  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
-
-</script>
+    //set DEFAULT
+    const settings = { width: 300, color: 'black' } //height, fontsize
+    const { width = 100, height = 100, color = 'blue', fontSize = 25 } = settings;
+  </script>
 </body>
+
 </html>

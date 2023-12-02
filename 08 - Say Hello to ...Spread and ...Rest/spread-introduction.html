@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>The ...Spread Operator</title>
 </head>
+
 <body>
-<script>
+  <script>
+    //The spread operator takes EVERY SINGLE ITEM from an ITERABLE 
+    //ITERABLE - is anything we can loop over with our FOR OF LOOP [Arrays, Strings, DOM nodes, ARGUMENTS, OBJECTS, MAPS, SETS ]
+    const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
+    const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
 
-  const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
-  const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
+    //The spread makes each item of the original array into it's own item in the new array
+    const pizzas = [...featured, 'veg', ...specialty];
+    console.log(pizzas);
+    //COPIES of an ARRAY by using a SPREAD, creates a NEW ARRAY
+    const fridayPizza = [...pizzas];
 
-  const pizzas = [...featured, 'veg', ...specialty];
-  const fridayPizzas = [...pizzas];
 
-  const deepDish = {
-    pizzaName: 'Deep Dish',
-    size: 'Medium',
-    ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
-  };
+    const deepDish = {
+      pizzaName: 'Deep Dish',
+      size: 'Medium',
+      ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+    };
 
-</script>
+  </script>
 </body>
+
 </html>

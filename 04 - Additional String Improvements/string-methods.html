@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>New String Methods</title>
 </head>
+
 <body>
 
-<script>
-const course = 'RFB2';
-const flightNumber = '20-AC2018-jz';
-const accountNumber = '825242631RT0001';
+  <script>
+    //Reduce reliance on RegExp, startsWith() has no work around for CASE SENSITIVE strings
+    const course = 'RFB2';
+    const flightNumber = '20-AC2018-jz';
+    const accountNumber = '825242631RT0001';
 
-const make = 'BMW';
-const model = 'x5';
-const colour = 'Royal Blue';
+    const make = 'BMW';
+    const model = 'x5';
+    const colour = 'Royal Blue';
 
-// .startsWith()
+    // .startsWith(), BOOLEAN: returns T/F if something starts with ___, can also add a second ARG to SKIP a certain number of CHARACTERS
 
-// .endsWith()
+    // .endsWith(), similar to .startsWith(), second ARG can take a certain amount of numbers and ignore the rest
+    //accountNumber.endsWith('RT', 11)
 
-// .includes()
+    // .includes(), will check if that string is anywhere in it, NOT CASE SENSITIVE
 
-// .repeat()
+    // .repeat(), allows you to take a string and repeat it
+    function leftPad(str, length = 20) {
+      return `-> ${' '.repeat(length - str.length)}${str}`;
+    }
+    console.log(leftPad(make)); make
+    console.log(leftPad(model)); model
+    console.log(leftPad(colour)); colour
 
-function leftPad(str, length = 20) {
-  return `→ ${' '.repeat(length - str.length)}${str}`;
-}
-
-console.log(leftPad(make));
-console.log(leftPad(model));
-console.log(leftPad(colour));
-
-
-</script>
+  </script>
 
 </body>
+
 </html>

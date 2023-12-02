@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array .from() and .of()</title>
 </head>
+
 <body>
   <div class="people">
     <p>Wes</p>
     <p>Kait</p>
     <p>Snickers</p>
   </div>
-<script>
-  // const people = document.querySelectorAll('.people p');
-  // const peopleArray = Array.from(people, person => {
-  //   console.log(person);
-  //   return person.textContent;
-  // });
-  // console.log(peopleArray);
+  <script>
+    // ARRAY METHODS .from() and .of() are not on the prototype, THEY are ON the ARRAY itself 'Array.of(), Array.from()'
+    // .from() will take something that is ARRAY-ish and turn it into a TRUE ARRAY
 
-  // // const names = people.map(person => person.textContent);
+    //USE CASES for .from() - Working with DOM Elements
+    //To make the MAP work we need to convert it to a TRUE Array
+    /*   const people = document.querySelectorAll('.people p');
+    const peopleArray = Array.from(people);
+    const names = peopleArray.map(person => person.textContent);
+    console.log(peopleArray);
+     */
 
-  function sumAll() {
-    const nums = Array.from(arguments);
-    return nums.reduce((prev, next) => prev + next, 0);
-  }
+    //CAN also wrap the querySelector with Array.FROM
+    /*  const people = Array.from(document.querySelectorAll('.people p'));
+     const names = people.map(person => person.textContent);
+     console.log(people); */
 
-  sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342);
+    //CAN also make the code above a ONE LINER. Array.from takes a second ARG which is a MAP function which will allow us to MODIFY the data as we are CREATING the ARRAY
+    /*     const people = document.querySelectorAll('.people p');
+        const peopleArray = Array.from(people, person => {
+          return person.textContent
+        });
+        console.log(peopleArray);  */
 
-  const ages = Array.of(12,4,23,62,34);
-  console.log(ages);
 
-</script>
+    //ANOTHER USE CASE: if we want to CONVERT the ARGUMENTS OBJECT into an actual ARRAY
+    function sumAll() {
+      const nums = Array.from(arguments);
+      //console.log(arguments); //this is Array-ish hence does not work 
+      //return arguments.reduce((prev, next) => prev + next, 0);
+      return nums.reduce((prev, next) => prev + next, 0);
+    }
+    sumAll(2, 34, 23, 234, 123, 4543, 66755);
+
+
+    //ARRAY.OF -> more straightforward, one of the methods you put in your back pocket
+    const ages = Array.of(12, 4, 23, 62, 34);
+    console.log(ages);
+  </script>
 </body>
+
 </html>

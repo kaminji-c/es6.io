@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Iterables & Looping</title>
+</head>
+
+<body>
+
+  <script>
+    const apple = {
+      color: 'Red',
+      size: 'Medium',
+      weight: 50,
+      sugar: 10
+    };
+
+    //You CANNOT ITERATE over an OBJECT using a FOR OF LOOP
+    /*  for (const prop of apple) {
+      console.log(prop);
+    } */
+
+    //What are our options?
+    //1. OBJ METHOD CALLED .entries in addition to a POLYFILL
+    /*  for (const prop of apple.entries()) {
+       console.log(prop);
+     } */
+    //2. If you cannot use a POLYFILL, then you can use OBJECT.KEYS: will take in an object and will return to us an ARRAY of all of the KEYS
+    /*   for (const prop of Object.keys(apple)) {
+        const value = apple[prop];
+        console.log(value, prop);
+      } */
+    /* 3. RECOMMENDED if you CANNOT use OBJ.entries... Can ALSO just use a FOR IN LOOP */
+    for (const prop in apple) {
+      const value = apple[prop];
+      console.log(value, prop);
+    }
+  </script>
+</body>
+
+</html>

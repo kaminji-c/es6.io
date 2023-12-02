@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iterables & Looping</title>
+</head>
+
+<body>
+    <script>
+        //ITERABLE - is anything that can be LOOPED over
+        const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
+
+        /* 1. FOR LOOP
+        Downside: Confusing syntax, not as readable code */
+        /*   for (let i = 0; i < cuts.length; i++) {
+            console.log(cuts[i]);
+        }  */
+
+        /* 2. (.)FOREACH array method
+        Downside: CANNOT ABORT this LOOP, CANNOT SKIP one of the LOOPS*/
+        /*   cuts.forEach((cut) => {
+            console.log(cut);
+            //illegal usage, cannot use break or continue in  a for loop
+            if (cut === 'Brisket') {
+                break;
+                continue;
+            }
+        }); */
+
+        /* 3. FOR IN LOOP
+        Downside: If someone monkeys with the prototype, it iterates over everything in the array(not just the items of the collection)...including additional things that have been added to the prototype. Anytime you add a property or method onto the array it will show up
+        */
+        /* for (const index in cuts) {
+            console.dir(cuts[index]);
+         } */
+
+        /* 4. FOR OF LOOP(newer, sort of gives the best of each FOR loops above)
+        PROS: Can use it for any TYPE of DATA except OBJECTS*/
+        for (const cut of cuts) {
+            if (cut === 'Brisket') {
+                //break; stops at Brisket
+                continue; //skips an item 'Brisket'
+            }
+            console.log(cut);
+        }
+
+    </script>
+</body>
+
+</html>

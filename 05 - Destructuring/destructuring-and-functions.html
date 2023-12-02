@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Destructuring in Action!</title>
 </head>
+
 <body>
-<script>
-  function convertCurrency(amount) {
-    const converted = {
-      USD: amount * 0.76,
-      GPB: amount * 0.53,
-      AUD: amount * 1.01,
-      MEX: amount * 13.30
-    };
-    return converted;
-  }
+  <script>
+    function convertCurrency(amount) {
+      const converted = {
+        USD: amount * 0.76,
+        GPB: amount * 0.53,
+        AUD: amount * 1.01,
+        MEX: amount * 13.30
+      };
+      return converted;
+    }
 
-  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
-    return total + (tip * total) + (tax * total);
-  }
+    //rather than console logging 'hundo', we IMMEDIATELY destructure our DATA into four separate values or we can pick and choose what DATA we want returned from a FUNCTION
+    const { USD, GPB, AUD, MEX } = convertCurrency(100);
+    //const hundo = convertCurrency(100);
+    //console.log(hundo);
+    console.log(USD, GPB, AUD, MEX);
 
-  const bill = tipCalc({ tip: 0.20, total: 200 });
-  console.log(bill);
+    //with destructuring you can sort of return MULTIPLE VALUES by RETURNING AN OBJECT
 
-</script>
+
+    //DEFAULT NAMED ELEMENTS 
+    //TIPS: on how to make this ORDER INDEPENDENT 
+    /*  Original  
+     function tipCalc(total, tip = 0.15, tax = 0.13) {
+       return total + (tip * total) + (tax * total);
+     }*/
+    //wrapping these 3 ARGUMENTS in curly brackets -> so that when we PASS in an OBJECT it's going to DESTRUCTURE them into 3 VARIABLES 
+    function tipCalc({ total, tip = 0.15, tax = 0.13 }) {
+      return total + (tip * total) + (tax * total);
+    }
+    const bill = tipCalc({ total: 200, tip: 0.20, tax: 0.13 });
+
+    //Something to NOTE, if we want to be able to pass in the DEFAULT VARIABLES then we need to give it an DEFAULT ARGUMENT 
+    function tipCalc2({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+      return total + (tip * total) + (tax * total);
+    }
+    const bill2 = tipCalc2();
+    console.log(bill2);
+  </script>
 </body>
+
 </html>
